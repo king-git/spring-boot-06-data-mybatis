@@ -1,0 +1,27 @@
+package com.caihao.springboot.config;
+
+import org.apache.ibatis.session.Configuration;
+import org.mybatis.spring.boot.autoconfigure.ConfigurationCustomizer;
+import org.springframework.context.annotation.Bean;
+
+/**
+ * @author CaiHao
+ * @create 2019-08-24 22:13:50
+ */
+
+
+@org.springframework.context.annotation.Configuration
+public class MybatisConfig {
+
+    @Bean
+    public ConfigurationCustomizer customizer(){
+        ConfigurationCustomizer configurationCustomizer = new ConfigurationCustomizer() {
+            @Override
+            public void customize(Configuration configuration) {
+                configuration.setMapUnderscoreToCamelCase(true);//mybatis 开启驼峰命名规则
+            }
+        };
+
+        return configurationCustomizer;
+    }
+}
